@@ -1,12 +1,3 @@
-﻿# financial-agent
-
-# financial-agent
-You want a README. Good. Nothing screams “I watched one YouTube tutorial” like a repo without one.
-
-Here’s a clean, professional README you can paste into `README.md`. No cringe. No fluff. Just solid engineering tone.
-
----
-
 ##  Financial AI Agent
 
 An end-to-end AI-powered financial assistant built with Python and FastAPI.
@@ -120,5 +111,6 @@ This project demonstrates:
 * Containerized deployment
 
 Built as a portfolio project to showcase AI engineering and agent design capabilities.
+
 
 
