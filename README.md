@@ -1,65 +1,77 @@
-##  Financial AI Agent
+# Financial AI Agent
 
-An end-to-end AI-powered financial assistant built with Python and FastAPI.
-The agent can fetch financial market data, process user queries, and generate structured responses using LLM-based reasoning.
+A modular AI-powered financial assistant built with Python and FastAPI.
+
+This project demonstrates how agent-based architectures can integrate large language models with structured financial data tools in a clean, production-oriented design.
+
+---
+
+## Overview
+
+The system separates reasoning logic from data retrieval tools and API exposure.
+It is fully deployable locally and containerized using Docker.
+
+Architecture flow:
+
+User → FastAPI → Agent → Financial Tools → External APIs → Response
 
 ---
 
 ## Features
 
-* AI-powered financial query handling
-* Real-time stock data retrieval (via `yfinance`)
-* Modular agent architecture
-* FastAPI backend for API exposure
-* Dockerized for container deployment
+* Agent-based orchestration layer
+* Real-time stock market data via `yfinance`
+* FastAPI backend for structured API access
+* Modular tool abstraction
 * Environment-based configuration
-* Local deployment support (no cloud required)
+* Dockerized deployment
+* Local-first setup (no cloud dependency required)
 
 ---
 
-##  Project Structure
+## Project Structure
 
 ```
 financial-agent/
 │
-├── tools.py          # Financial data tools (market data, utilities)
-├── agent.py          # Agent logic and reasoning layer
-├── app.py            # FastAPI API layer
-├── run.py            # Application entry point
-├── requirements.txt  # Dependencies
-├── Dockerfile        # Container configuration
+├── tools.py          # Financial data retrieval and utilities
+├── agent.py          # Agent reasoning and orchestration
+├── app.py            # FastAPI application layer
+├── run.py            # Entry point
+├── requirements.txt
+├── Dockerfile
 ├── .dockerignore
-└── .env              # Environment variables (not committed)
+└── .env              # Local environment variables (excluded from Git)
 ```
 
 ---
 
-##  Installation (Local)
+## Installation (Local)
 
-### 1️ Clone the repository
+### 1. Clone
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/financial-agent.git
 cd financial-agent
 ```
 
-### 2️ Create virtual environment
+### 2. Create virtual environment
 
 ```bash
 python -m venv .venv
-source .venv/bin/activate   # Mac/Linux
-.venv\Scripts\activate      # Windows
+.venv\Scripts\activate     # Windows
+source .venv/bin/activate  # Mac/Linux
 ```
 
-### 3️ Install dependencies
+### 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4️ Configure environment
+### 4. Configure environment
 
-Create `.env` file:
+Create a `.env` file:
 
 ```
 OPENAI_API_KEY=your_api_key_here
@@ -67,13 +79,13 @@ OPENAI_API_KEY=your_api_key_here
 
 ---
 
-## ▶ Run the Application
+## Run the Application
 
 ```bash
 uvicorn app:app --reload
 ```
 
-Then open:
+Access:
 
 ```
 http://127.0.0.1:8000
@@ -81,36 +93,33 @@ http://127.0.0.1:8000
 
 ---
 
-##  Run with Docker
+## Docker Deployment
+
+Build:
 
 ```bash
 docker build -t financial-agent .
-docker run -p 8000:8000 financial-agent
+```
+
+Run:
+
+```bash
+docker run -p 8000:8000 -e OPENAI_API_KEY=your_key financial-agent
 ```
 
 ---
 
-##  Architecture Overview
+## Design Principles
 
-User → FastAPI → Agent → Tools → External APIs → Response
-
-* The **Agent** handles reasoning and orchestration.
-* **Tools** fetch structured financial data.
-* The system separates heavy processing from API handling for better scalability.
+* Clear separation of concerns (API / Agent / Tools)
+* Extensible tool architecture
+* Environment-driven configuration
+* Reproducible container builds
+* Structured system thinking over quick scripting
 
 ---
 
-##  Use Case
+## Purpose
 
-This project demonstrates:
-
-* Agent-based AI architecture
-* Tool integration
-* Financial data processing
-* Production-ready API structuring
-* Containerized deployment
-
-Built as a portfolio project to showcase AI engineering and agent design capabilities.
-
-
+This project was built to explore practical AI agent architecture in a financial use case, focusing on maintainability, extensibility, and production-style structure rather than prompt experimentation alone.
 
